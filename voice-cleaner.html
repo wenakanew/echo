@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>echo · audio intelligence</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎙️</text></svg>" />
     <!-- modern + refined vintage touch -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,6 +42,8 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem 2.5rem;
+            position: relative;
+            min-height: 100vh;
         }
 
         /* navigation - top bar with dev button */
@@ -59,6 +62,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            cursor: pointer;
         }
 
         .logo span {
@@ -314,7 +318,255 @@
             color: #2a2420;
         }
 
-        /* developer dashboard (hidden by default) */
+        /* Login/Signup Page Styles */
+        #loginView {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-container {
+            max-width: 480px;
+            margin: 2rem auto;
+            background: #ffffff;
+            border: 1px solid #e5dbd2;
+            border-radius: 48px 24px 48px 24px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 30px 50px -30px rgba(60, 40, 20, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #d9c8b8, #9b6f50, #d9c8b8);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .login-header h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #1e1b18;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: #7d6b5c;
+            font-size: 1.1rem;
+        }
+
+        .login-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            background: #fcf9f6;
+            padding: 0.5rem;
+            border-radius: 60px 12px 60px 12px;
+            border: 1px solid #e5dbd2;
+        }
+
+        .login-tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 40px 8px 40px 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            color: #7d6b5c;
+        }
+
+        .login-tab.active {
+            background: #2a2420;
+            color: #ffffff;
+        }
+
+        .login-form {
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a3f38;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: #fcf9f6;
+            border: 2px solid #e5dbd2;
+            border-radius: 30px 8px 30px 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            color: #1e1b18;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #9b6f50;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(155, 111, 80, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #b9a99b;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        .forgot-password a {
+            color: #7d6b5c;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #d9c8b8;
+        }
+
+        .forgot-password a:hover {
+            color: #9b6f50;
+        }
+
+        .login-submit-btn {
+            width: 100%;
+            background: #2a2420;
+            color: #ffffff;
+            border: none;
+            padding: 1.2rem;
+            border-radius: 40px 12px 40px 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-submit-btn:hover {
+            background: #3f3731;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -8px #2a2420;
+        }
+
+        .divider {
+            position: relative;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: calc(50% - 70px);
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e5dbd2, transparent);
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .divider span {
+            background: #ffffff;
+            padding: 0 1rem;
+            color: #8b7a6c;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .google-btn {
+            width: 100%;
+            background: #ffffff;
+            border: 2px solid #e5dbd2;
+            padding: 1rem;
+            border-radius: 40px 12px 40px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            color: #2a2420;
+            margin-bottom: 1.5rem;
+        }
+
+        .google-btn:hover {
+            background: #fcf9f6;
+            border-color: #9b6f50;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(155, 111, 80, 0.15);
+        }
+
+        .google-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .google-icon {
+            font-size: 1.5rem;
+        }
+
+        .login-footer {
+            text-align: center;
+            color: #7d6b5c;
+        }
+
+        .login-footer a {
+            color: #9b6f50;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid #e1cfbc;
+        }
+
+        .login-footer a:hover {
+            color: #2a2420;
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #7d6b5c;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .back-to-home:hover {
+            color: #9b6f50;
+        }
+
+        /* Developer Dashboard (hidden initially) */
         #devView {
             display: none;
         }
@@ -518,7 +770,7 @@
 
         /* utility */
         .hidden {
-            display: none;
+            display: none !important;
         }
 
         .mt-4 {
@@ -530,7 +782,7 @@
     <div class="container">
         <!-- Navigation with dev button at top right -->
         <nav class="nav-bar">
-            <div class="logo">
+            <div class="logo" id="homeLogo">
                 echo <span>audio intelligence</span>
             </div>
             <button class="dev-button" id="toggleDevBtn">
@@ -602,6 +854,76 @@
                         ⚡ 2,400+ hours processed today
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- LOGIN/SIGNUP PAGE VIEW -->
+        <div id="loginView">
+            <div class="login-container">
+                <div class="login-header">
+                    <h2>welcome back</h2>
+                    <p>continue to developer console</p>
+                </div>
+
+                <div class="login-tabs">
+                    <div class="login-tab active" id="loginTab">login</div>
+                    <div class="login-tab" id="signupTab">sign up</div>
+                </div>
+
+                <!-- Login Form (active by default) -->
+                <div id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label>email</label>
+                        <input type="email" placeholder="hello@example.com" />
+                    </div>
+                    <div class="form-group">
+                        <label>password</label>
+                        <input type="password" placeholder="••••••••" />
+                        <div class="forgot-password">
+                            <a href="#">forgot password?</a>
+                        </div>
+                    </div>
+                    <button class="login-submit-btn">sign in</button>
+                </div>
+
+                <!-- Signup Form (hidden by default) -->
+                <div id="signupForm" class="login-form" style="display: none;">
+                    <div class="form-group">
+                        <label>full name</label>
+                        <input type="text" placeholder="Alex Chen" />
+                    </div>
+                    <div class="form-group">
+                        <label>email</label>
+                        <input type="email" placeholder="hello@example.com" />
+                    </div>
+                    <div class="form-group">
+                        <label>password</label>
+                        <input type="password" placeholder="create a password" />
+                    </div>
+                    <div class="form-group">
+                        <label>confirm password</label>
+                        <input type="password" placeholder="confirm password" />
+                    </div>
+                    <button class="login-submit-btn">create account</button>
+                </div>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+
+                <!-- Google Sign In Button -->
+                <button class="google-btn" onclick="alert('Google Sign-In demo - would redirect to OAuth')">
+                    <span class="google-icon">G</span>
+                    <span>continue with google</span>
+                </button>
+
+                <div class="login-footer">
+                    <p>by continuing, you agree to our <a href="#">terms</a> and <a href="#">privacy policy</a></p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" id="backToHomeFromLogin" class="back-to-home">← back to home</a>
             </div>
         </div>
 
@@ -701,37 +1023,96 @@
     <script>
         (function() {
             const landingView = document.getElementById('landingView');
+            const loginView = document.getElementById('loginView');
             const devView = document.getElementById('devView');
             const toggleBtn = document.getElementById('toggleDevBtn');
             const backBtn = document.getElementById('backToUserBtn');
+            const homeLogo = document.getElementById('homeLogo');
+            const backToHomeFromLogin = document.getElementById('backToHomeFromLogin');
+            const loginTab = document.getElementById('loginTab');
+            const signupTab = document.getElementById('signupTab');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            // Tab switching
+            loginTab.addEventListener('click', () => {
+                loginTab.classList.add('active');
+                signupTab.classList.remove('active');
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+            });
+
+            signupTab.addEventListener('click', () => {
+                signupTab.classList.add('active');
+                loginTab.classList.remove('active');
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+            });
 
             function showLanding() {
                 landingView.style.display = 'block';
+                loginView.style.display = 'none';
                 devView.style.display = 'none';
                 toggleBtn.innerHTML = '<span>🎛️</span> developer console';
             }
 
+            function showLogin() {
+                landingView.style.display = 'none';
+                loginView.style.display = 'block';
+                devView.style.display = 'none';
+                toggleBtn.innerHTML = '<span>←</span> back to home';
+            }
+
             function showDev() {
                 landingView.style.display = 'none';
+                loginView.style.display = 'none';
                 devView.style.display = 'block';
                 toggleBtn.innerHTML = '<span>←</span> back to user';
             }
 
+            // Toggle button handler
             toggleBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 if (landingView.style.display !== 'none') {
-                    showDev();
-                } else {
-                    showLanding();
+                    showLogin(); // Go to login first
+                } else if (loginView.style.display !== 'none') {
+                    showLanding(); // Back to home from login
+                } else if (devView.style.display !== 'none') {
+                    showLanding(); // Back to home from dev dashboard
                 }
             });
 
+            // Back to user from dev dashboard
             backBtn?.addEventListener('click', (e) => {
                 e.preventDefault();
                 showLanding();
             });
 
-            // initial state
+            // Back to home from login page
+            backToHomeFromLogin?.addEventListener('click', (e) => {
+                e.preventDefault();
+                showLanding();
+            });
+
+            // Logo click always goes to landing
+            homeLogo?.addEventListener('click', () => {
+                showLanding();
+            });
+
+            // For demo: clicking "sign in" or "create account" goes to dev dashboard
+            document.querySelectorAll('.login-submit-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showDev();
+                });
+            });
+
+            // Google button also leads to dev dashboard (demo)
+            document.querySelector('.google-btn')?.addEventListener('click', () => {
+                showDev();
+            });
+
+            // Initial state
             showLanding();
         })();
     </script>
