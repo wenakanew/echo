@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>echo · audio intelligence</title>
+    <!-- modern + refined vintage touch -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #faf7f2;
+            color: #1e1b18;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* refined paper texture - subtle */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 30% 40%, rgba(190, 150, 110, 0.03) 0%, transparent 40%),
+                              repeating-linear-gradient(45deg, rgba(180, 140, 100, 0.02) 0px, rgba(180, 140, 100, 0.02) 2px, transparent 2px, transparent 6px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 2.5rem;
+        }
+
+        /* navigation - top bar with dev button */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #2a2420;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            background: #d9c8b8;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px 4px 20px 4px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #4a3f38;
+        }
+
+        .dev-button {
+            background: transparent;
+            border: 2px solid #c7b1a0;
+            color: #4a3f38;
+            font-weight: 500;
+            padding: 0.8rem 2rem;
+            border-radius: 40px 12px 40px 12px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(100, 70, 40, 0.05);
+        }
+
+        .dev-button:hover {
+            background: #c7b1a0;
+            color: #1e1b18;
+            border-color: #9e8876;
+            box-shadow: 0 8px 20px rgba(160, 120, 80, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .dev-button:active {
+            transform: translateY(0);
+        }
+
+        /* main grid - cleaner, more balanced */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hero-section h1 {
+            font-size: 4.2rem;
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: #1e1b18;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-section h1 .accent {
+            color: #9b6f50;
+            font-style: italic;
+            font-weight: 500;
+            border-bottom: 3px solid #e1cfbc;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #5f554c;
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+            font-weight: 350;
+            line-height: 1.6;
+        }
+
+        /* upload area - modern minimal */
+        .upload-container {
+            background: #ffffff;
+            border: 1px solid #e5dbd2;
+            border-radius: 32px 16px 32px 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 25px 40px -20px rgba(90, 60, 40, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .upload-container:hover {
+            box-shadow: 0 30px 50px -20px #9b7b64;
+        }
+
+        .upload-area {
+            border: 2px dashed #d9c8b8;
+            border-radius: 24px 8px 24px 8px;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            background: #fcf9f6;
+            transition: background 0.2s ease;
+        }
+
+        .upload-area:hover {
+            background: #fffbf7;
+            border-color: #b99f8a;
+        }
+
+        .upload-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        .file-label {
+            background: #2a2420;
+            color: #faf7f2;
+            font-weight: 500;
+            padding: 1rem 2.5rem;
+            border-radius: 40px 12px 40px 12px;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 18px -6px #2a242050;
+        }
+
+        .file-label:hover {
+            background: #3f3731;
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px -8px #3f3731b0;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-hint {
+            margin-top: 1.2rem;
+            color: #8b7a6c;
+            font-size: 0.9rem;
+        }
+
+        .process-btn {
+            width: 100%;
+            margin-top: 1.5rem;
+            background: #fff;
+            border: 2px solid #2a2420;
+            color: #2a2420;
+            font-weight: 600;
+            padding: 1rem;
+            border-radius: 40px 12px 40px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .process-btn:hover {
+            background: #2a2420;
+            color: #fff;
+        }
+
+        /* right panel - refined card */
+        .info-panel {
+            background: #ffffff;
+            border: 1px solid #e5dbd2;
+            border-radius: 32px 16px 32px 16px;
+            padding: 2rem;
+            box-shadow: 0 25px 40px -20px rgba(90, 60, 40, 0.15);
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0e7de;
+        }
+
+        .panel-header h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #7d6b5c;
+        }
+
+        .sample-transcript {
+            background: #fcf9f6;
+            border: 1px solid #e5dbd2;
+            border-radius: 20px 8px 20px 8px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .sample-meta {
+            display: flex;
+            gap: 12px;
+            color: #9b8878;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .sample-text {
+            font-size: 1.3rem;
+            line-height: 1.5;
+            color: #1e1b18;
+            font-weight: 350;
+            margin-bottom: 1.5rem;
+        }
+
+        .waveform {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            height: 40px;
+        }
+
+        .waveform span {
+            flex: 1;
+            height: 100%;
+            background: linear-gradient(to top, #d9c8b8, #b99f8a);
+            border-radius: 20px 4px 20px 4px;
+        }
+
+        .waveform span:nth-child(1) { height: 24px; }
+        .waveform span:nth-child(2) { height: 38px; }
+        .waveform span:nth-child(3) { height: 16px; }
+        .waveform span:nth-child(4) { height: 42px; }
+        .waveform span:nth-child(5) { height: 28px; }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            color: #5f554c;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0e7de;
+        }
+
+        .stats-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: #2a2420;
+        }
+
+        /* developer dashboard (hidden by default) */
+        #devView {
+            display: none;
+        }
+
+        .dev-dashboard {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        /* modern sidebar */
+        .dev-sidebar {
+            background: #ffffff;
+            border: 1px solid #e5dbd2;
+            border-radius: 32px 16px 32px 16px;
+            padding: 2rem 0;
+            height: fit-content;
+            box-shadow: 0 25px 40px -20px rgba(90, 60, 40, 0.15);
+        }
+
+        .dev-sidebar h2 {
+            padding: 0 2rem 1.5rem;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1e1b18;
+            border-bottom: 2px solid #f0e7de;
+        }
+
+        .dev-nav-item {
+            padding: 1rem 2rem;
+            margin: 0.2rem 0.8rem;
+            border-radius: 40px 8px 40px 8px;
+            color: #5f554c;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .dev-nav-item:hover {
+            background: #fcf9f6;
+            color: #2a2420;
+        }
+
+        .dev-nav-item.active {
+            background: #2a2420;
+            color: #fff;
+        }
+
+        .dev-nav-item i {
+            font-size: 1.3rem;
+            font-style: normal;
+            opacity: 0.8;
+        }
+
+        .back-link {
+            margin-top: 2rem;
+            border-top: 2px solid #f0e7de;
+            padding-top: 1.5rem;
+        }
+
+        /* main dev content */
+        .dev-content {
+            background: #ffffff;
+            border: 1px solid #e5dbd2;
+            border-radius: 32px 16px 32px 16px;
+            padding: 2.5rem;
+            box-shadow: 0 25px 40px -20px rgba(90, 60, 40, 0.15);
+        }
+
+        .dev-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .dev-header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1e1b18;
+        }
+
+        .plan-badge {
+            background: #f0e7de;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px 8px 40px 8px;
+            font-weight: 500;
+            color: #5f554c;
+        }
+
+        .dev-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .dev-metric-card {
+            background: #fcf9f6;
+            border: 1px solid #e5dbd2;
+            border-radius: 24px 8px 24px 8px;
+            padding: 1.5rem;
+        }
+
+        .metric-label {
+            color: #7d6b5c;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-number {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #1e1b18;
+            line-height: 1;
+        }
+
+        .metric-trend {
+            color: #9b6f50;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .dev-section {
+            background: #fcf9f6;
+            border: 1px solid #e5dbd2;
+            border-radius: 24px 8px 24px 8px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .dev-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #1e1b18;
+        }
+
+        .api-key-row {
+            background: #fff;
+            border: 1px solid #e5dbd2;
+            border-radius: 40px 8px 40px 8px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .api-key-row code {
+            font-family: 'Space Grotesk', monospace;
+            font-size: 1.1rem;
+            color: #2a2420;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 2px solid #d9c8b8;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px 6px 30px 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #d9c8b8;
+        }
+
+        .generate-btn {
+            background: #2a2420;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 40px 8px 40px 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .generate-btn:hover {
+            background: #3f3731;
+        }
+
+        .code-block {
+            background: #fff;
+            border: 1px solid #e5dbd2;
+            border-radius: 16px 6px 16px 6px;
+            padding: 1.2rem;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.95rem;
+            color: #2a2420;
+            margin-bottom: 1rem;
+        }
+
+        /* utility */
+        .hidden {
+            display: none;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation with dev button at top right -->
+        <nav class="nav-bar">
+            <div class="logo">
+                echo <span>audio intelligence</span>
+            </div>
+            <button class="dev-button" id="toggleDevBtn">
+                <span>🎛️</span> developer console
+            </button>
+        </nav>
+
+        <!-- LANDING PAGE VIEW -->
+        <div id="landingView">
+            <div class="main-grid">
+                <!-- left side: hero + upload -->
+                <div class="hero-section">
+                    <h1>
+                        pristine audio,<br>
+                        <span class="accent">intelligent</span> transcription
+                    </h1>
+                    <p class="hero-description">
+                        Upload your recording. Our system removes noise and delivers a crystal-clear transcript in seconds.
+                    </p>
+                    
+                    <div class="upload-container">
+                        <div class="upload-area">
+                            <div class="upload-icon">🎵</div>
+                            <label for="audioFile" class="file-label">choose audio file</label>
+                            <input type="file" id="audioFile" accept="audio/*" />
+                            <p class="file-hint">MP3, WAV, M4A · up to 2 hours</p>
+                        </div>
+                        <button class="process-btn">
+                            <span>✨</span> process & transcribe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- right side: info panel with sample -->
+                <div class="info-panel">
+                    <div class="panel-header">
+                        <span style="font-size: 1.5rem;">📋</span>
+                        <h3>live sample</h3>
+                    </div>
+
+                    <div class="sample-transcript">
+                        <div class="sample-meta">
+                            <span>podcast interview</span>
+                            <span>·</span>
+                            <span>24 min</span>
+                        </div>
+                        <div class="sample-text">
+                            "The system handles background noise remarkably well — even with multiple speakers and room echo..."
+                        </div>
+                        <div class="waveform">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+
+                    <div class="stats-row">
+                        <span>noise reduction</span>
+                        <span class="stat-value">98.3%</span>
+                    </div>
+                    <div class="stats-row">
+                        <span>accuracy score</span>
+                        <span class="stat-value">97.1%</span>
+                    </div>
+                    <div class="stats-row">
+                        <span>avg processing</span>
+                        <span class="stat-value">12 seconds</span>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 1rem; background: #fcf9f6; border-radius: 16px 4px 16px 4px; font-size: 0.95rem; color: #5f554c;">
+                        ⚡ 2,400+ hours processed today
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DEVELOPER DASHBOARD VIEW (hidden initially) -->
+        <div id="devView">
+            <div class="dev-dashboard">
+                <!-- sidebar -->
+                <div class="dev-sidebar">
+                    <h2>developer</h2>
+                    <div class="dev-nav-item active">
+                        <i>📊</i> dashboard
+                    </div>
+                    <div class="dev-nav-item">
+                        <i>📈</i> usage
+                    </div>
+                    <div class="dev-nav-item">
+                        <i>🔑</i> api keys
+                    </div>
+                    <div class="dev-nav-item">
+                        <i>📄</i> documentation
+                    </div>
+                    <div class="dev-nav-item back-link" id="backToUserBtn">
+                        <i>←</i> back to user
+                    </div>
+                </div>
+
+                <!-- main content -->
+                <div class="dev-content">
+                    <div class="dev-header">
+                        <h1>dashboard</h1>
+                        <span class="plan-badge">pro plan · active</span>
+                    </div>
+
+                    <!-- metrics -->
+                    <div class="dev-metrics">
+                        <div class="dev-metric-card">
+                            <div class="metric-label">api calls</div>
+                            <div class="metric-number">14.2k</div>
+                            <div class="metric-trend">↑ 12% this month</div>
+                        </div>
+                        <div class="dev-metric-card">
+                            <div class="metric-label">audio minutes</div>
+                            <div class="metric-number">6,431</div>
+                            <div class="metric-trend">↑ 8% vs last month</div>
+                        </div>
+                        <div class="dev-metric-card">
+                            <div class="metric-label">team members</div>
+                            <div class="metric-number">5</div>
+                            <div class="metric-trend">2 pending invites</div>
+                        </div>
+                    </div>
+
+                    <!-- api keys section -->
+                    <div class="dev-section">
+                        <h3>🔐 active api keys</h3>
+                        <div class="api-key-row">
+                            <code>prod_echo_live_••••••••••w9x7q</code>
+                            <button class="copy-btn" onclick="alert('copied (demo)')">copy</button>
+                        </div>
+                        <div class="api-key-row">
+                            <code>dev_echo_test_••••••••••3f8k2</code>
+                            <button class="copy-btn" onclick="alert('copied (demo)')">copy</button>
+                        </div>
+                        <button class="generate-btn" style="margin-top: 1rem;">+ generate new key</button>
+                    </div>
+
+                    <!-- quick docs -->
+                    <div class="dev-section">
+                        <h3>📘 quick start</h3>
+                        <div class="code-block">
+                            curl -X POST https://api.echo.audio/v1/enhance \<br>
+                            &nbsp;&nbsp;-H "Authorization: Bearer YOUR_KEY" \<br>
+                            &nbsp;&nbsp;-F "file=@recording.wav"
+                        </div>
+                        <a href="#" style="color: #9b6f50; font-weight: 500; text-decoration: none;">→ full documentation</a>
+                    </div>
+
+                    <!-- usage graph placeholder -->
+                    <div class="dev-section">
+                        <h3>📊 recent usage</h3>
+                        <div style="display: flex; gap: 1rem; align-items: baseline; margin-bottom: 1rem;">
+                            <span style="font-weight: 600;">this week</span>
+                            <span style="color: #5f554c;">1,842 minutes</span>
+                        </div>
+                        <div style="height: 8px; background: #f0e7de; border-radius: 20px; overflow: hidden;">
+                            <div style="width: 73%; height: 100%; background: #9b6f50; border-radius: 20px;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 0.8rem; color: #7d6b5c;">
+                            <span>mon</span><span>tue</span><span>wed</span><span>thu</span><span>fri</span><span>sat</span><span>sun</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const landingView = document.getElementById('landingView');
+            const devView = document.getElementById('devView');
+            const toggleBtn = document.getElementById('toggleDevBtn');
+            const backBtn = document.getElementById('backToUserBtn');
+
+            function showLanding() {
+                landingView.style.display = 'block';
+                devView.style.display = 'none';
+                toggleBtn.innerHTML = '<span>🎛️</span> developer console';
+            }
+
+            function showDev() {
+                landingView.style.display = 'none';
+                devView.style.display = 'block';
+                toggleBtn.innerHTML = '<span>←</span> back to user';
+            }
+
+            toggleBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (landingView.style.display !== 'none') {
+                    showDev();
+                } else {
+                    showLanding();
+                }
+            });
+
+            backBtn?.addEventListener('click', (e) => {
+                e.preventDefault();
+                showLanding();
+            });
+
+            // initial state
+            showLanding();
+        })();
+    </script>
+</body>
+</html>
