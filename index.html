@@ -623,6 +623,56 @@
             border-color: #ccc;
         }
 
+        .processing-progress {
+            margin-top: 14px;
+            text-align: left;
+            display: none;
+        }
+
+        .processing-progress.active {
+            display: block;
+        }
+
+        .processing-progress-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #5a5a5a;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .processing-progress-track {
+            width: 100%;
+            height: 10px;
+            border-radius: 999px;
+            background: #ece9e4;
+            overflow: hidden;
+            border: 1px solid #dfd9d2;
+        }
+
+        .processing-progress-fill {
+            width: 0%;
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #1a1a1a 0%, #4f4f4f 100%);
+            transition: width 0.5s ease;
+        }
+
+        .processing-progress-note {
+            margin-top: 6px;
+            font-size: 12px;
+            color: #7a7a7a;
+        }
+
+        .process-btn-modern:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
         /* NEW REDESIGNED RESULTS SECTION */
         .results-section-new {
             margin: 4rem 0;
@@ -2147,6 +2197,16 @@
                                     <button id="removeFileBtn" class="upload-action-btn">Remove</button>
                                     <button id="selectAnotherBtn" class="upload-action-btn">Select Another</button>
                                 </div>
+                                <div id="processingProgress" class="processing-progress" aria-live="polite">
+                                    <div class="processing-progress-label">
+                                        <span id="processingProgressStatus">Ready to process</span>
+                                        <span id="processingProgressPercent">0%</span>
+                                    </div>
+                                    <div class="processing-progress-track">
+                                        <div id="processingProgressFill" class="processing-progress-fill"></div>
+                                    </div>
+                                    <div id="processingProgressNote" class="processing-progress-note">Click process audio to begin.</div>
+                                </div>
                             </div>
 
                             <input type="file" id="audioFile" class="hidden" />
@@ -3185,8 +3245,10 @@ processAudio('recording.wav');</pre>
         async function loadRuntimeConfig() {
             try {
                 const isLiveServer = window.location.port === '5500' || window.location.port === '5501';
-                if (isLiveServer) {
+                const isLocalHost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+                if (isLiveServer || !isLocalHost) {
                     // VS Code Live Server usually blocks dotfiles like .env
+                    // Production hosting also won't expose /.env, so skip runtime env fetch.
                     return;
                 }
 
@@ -3215,15 +3277,67 @@ processAudio('recording.wav');</pre>
 
         // ========== FREE USER FUNCTIONS ==========
 
+        function resetProcessingProgress() {
+            const progressWrap = document.getElementById('processingProgress');
+            const progressFill = document.getElementById('processingProgressFill');
+            const progressPercent = document.getElementById('processingProgressPercent');
+            const progressStatus = document.getElementById('processingProgressStatus');
+            const progressNote = document.getElementById('processingProgressNote');
+            const processButton = document.querySelector('.process-btn-modern');
+
+            progressWrap?.classList.remove('active');
+            if (progressFill) progressFill.style.width = '0%';
+            if (progressPercent) progressPercent.textContent = '0%';
+            if (progressStatus) progressStatus.textContent = 'Ready to process';
+            if (progressNote) progressNote.textContent = 'Click process audio to begin.';
+            if (processButton) {
+                processButton.disabled = false;
+                processButton.innerHTML = '<span></span> process audio';
+            }
+        }
+
+        function updateProcessingProgress(percent, statusText = 'Processing audio', noteText = 'Please keep this tab open.') {
+            const safePercent = Math.max(0, Math.min(100, Math.round(percent)));
+            const progressWrap = document.getElementById('processingProgress');
+            const progressFill = document.getElementById('processingProgressFill');
+            const progressPercent = document.getElementById('processingProgressPercent');
+            const progressStatus = document.getElementById('processingProgressStatus');
+            const progressNote = document.getElementById('processingProgressNote');
+
+            progressWrap?.classList.add('active');
+            if (progressFill) progressFill.style.width = `${safePercent}%`;
+            if (progressPercent) progressPercent.textContent = `${safePercent}%`;
+            if (progressStatus) progressStatus.textContent = statusText;
+            if (progressNote) progressNote.textContent = noteText;
+        }
+
+        function setProcessingState(isProcessing) {
+            const processButton = document.querySelector('.process-btn-modern');
+            const removeButton = document.getElementById('removeFileBtn');
+            const selectAnotherButton = document.getElementById('selectAnotherBtn');
+
+            if (processButton) {
+                processButton.disabled = isProcessing;
+                processButton.innerHTML = isProcessing ? '<span></span> processing...' : '<span></span> process audio';
+            }
+
+            if (removeButton) removeButton.disabled = isProcessing;
+            if (selectAnotherButton) selectAnotherButton.disabled = isProcessing;
+        }
+
         async function uploadAudio(file, startProcessing = false) {
             const formData = new FormData();
             formData.append('file', file);
             
             try {
                 if (startProcessing) {
+                    setProcessingState(true);
+                    updateProcessingProgress(5, 'Preparing audio', 'Upload received. Starting processing...');
                     document.getElementById('selectedFileName').textContent = 'processing...';
                     document.getElementById('selectedFileSize').textContent = 'this may take 20-30 seconds';
                 } else {
+                    setProcessingState(false);
+                    resetProcessingProgress();
                     document.getElementById('selectedFileName').textContent = 'uploading...';
                     document.getElementById('selectedFileSize').textContent = '';
                 }
@@ -3254,17 +3368,23 @@ processAudio('recording.wav');</pre>
                     const fileSize = (file.size / 1024 / 1024).toFixed(2);
                     document.getElementById('selectedFileName').textContent = fileName;
                     document.getElementById('selectedFileSize').textContent = fileSize + ' MB - Ready to process';
+                    updateProcessingProgress(0, 'Ready to process', 'Click process audio to begin.');
+                    document.getElementById('processingProgress')?.classList.remove('active');
                 }
                 
             } catch (error) {
                 console.error('Upload error:', error);
                 showError('Upload Failed', error.message);
+                setProcessingState(false);
+                resetProcessingProgress();
                 document.getElementById('selectedFileName').textContent = 'upload failed';
                 document.getElementById('selectedFileSize').textContent = 'try again';
             }
         }
 
         async function pollForResult(jobId) {
+            setProcessingState(true);
+            updateProcessingProgress(10, 'Queued', 'Your file is waiting in queue...');
             document.getElementById('selectedFileName').textContent = 'processing...';
             document.getElementById('selectedFileSize').textContent = 'this may take 1-3 minutes on first run';
             
@@ -3279,18 +3399,31 @@ processAudio('recording.wav');</pre>
                     const result = await response.json();
                     
                     console.log('Poll result:', result);
+
+                    if (result.status === 'queued') {
+                        const queuedProgress = Math.min(35, 10 + attempts * 2);
+                        updateProcessingProgress(queuedProgress, 'Queued', 'Waiting for an available worker...');
+                    } else if (result.status === 'processing') {
+                        const processingProgress = Math.min(95, 35 + Math.round((attempts / maxAttempts) * 55));
+                        updateProcessingProgress(processingProgress, 'Processing audio', 'Cleaning noise and generating transcript...');
+                    }
                     
                     if (result.status === 'completed') {
                         clearInterval(poll);
                         console.log('Processing completed successfully:', result);
+                        updateProcessingProgress(100, 'Completed', 'Your audio is ready.');
+                        setProcessingState(false);
                         displayResult(result);
                         // Reset file and UI for next upload
                         audioInput.value = '';
                         document.getElementById('uploadInitial').classList.remove('hidden');
                         document.getElementById('uploadSelected').classList.add('hidden');
+                        setTimeout(() => resetProcessingProgress(), 600);
                     } else if (result.status === 'failed') {
                         clearInterval(poll);
                         console.log('Processing failed:', result);
+                        setProcessingState(false);
+                        updateProcessingProgress(0, 'Processing failed', 'Please try again with another file.');
                         showError('Processing Failed', result.error || 'Unknown error occurred');
                         document.getElementById('selectedFileName').textContent = 'processing failed';
                         document.getElementById('selectedFileSize').textContent = 'try again';
@@ -3304,6 +3437,8 @@ processAudio('recording.wav');</pre>
                 // Stop polling if max attempts reached
                 if (attempts >= maxAttempts) {
                     clearInterval(poll);
+                    setProcessingState(false);
+                    updateProcessingProgress(0, 'Processing timeout', 'Server took too long to respond. Please retry.');
                     showError('Processing Timeout', 'Audio processing took too long (2+ minutes). The server may be overloaded.');
                     document.getElementById('selectedFileName').textContent = 'processing timeout';
                     document.getElementById('selectedFileSize').textContent = 'try again';
@@ -3698,6 +3833,7 @@ processAudio('recording.wav');</pre>
             e.stopPropagation();
             console.log('Remove file clicked');
             audioInput.value = '';
+            resetProcessingProgress();
             uploadInitial.classList.remove('hidden');
             uploadSelected.classList.add('hidden');
         });
@@ -3708,6 +3844,7 @@ processAudio('recording.wav');</pre>
             e.stopPropagation();
             console.log('Select another file clicked');
             audioInput.value = '';
+            resetProcessingProgress();
             audioInput.click();
         });
 
@@ -3716,6 +3853,7 @@ processAudio('recording.wav');</pre>
             if (e.target.files.length > 0) {
                 const file = e.target.files[0];
                 console.log('File selected:', file.name);
+                resetProcessingProgress();
                 
                 // Show selected file UI, hide initial UI
                 uploadInitial.classList.add('hidden');
@@ -3777,6 +3915,7 @@ processAudio('recording.wav');</pre>
             
             // Reset file input
             audioInput.value = '';
+            resetProcessingProgress();
             
             // Show upload initial state
             document.getElementById('uploadInitial').classList.remove('hidden');
