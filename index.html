@@ -77,6 +77,37 @@
             background: rgba(140, 120, 100, 0.1);
         }
 
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .font-medium {
+            font-weight: 500;
+        }
+
+        .text-dark {
+            color: #111111;
+            text-decoration: none;
+        }
+
+        .text-secondary {
+            color: #888888;
+        }
+
+        .mt-05 {
+            margin-top: 0.5rem;
+        }
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -216,6 +247,7 @@
             align-items: center;
             gap: 0.5rem;
             background: rgba(255, 255, 255, 0.8);
+                        -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
             border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 0.5rem 1.2rem 0.5rem 0.8rem;
@@ -314,6 +346,7 @@
         }
 
         .audio-card {
+                        -webkit-backdrop-filter: blur(15px);
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.5);
@@ -543,6 +576,245 @@
             box-shadow: 0 20px 30px -10px #1a1a1a;
         }
 
+        /* Upload selected file display */
+        .upload-selected-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .upload-selected-info {
+            margin-bottom: 15px;
+        }
+
+        .upload-file-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .upload-file-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .upload-file-size {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .upload-action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .upload-action-btn {
+            padding: 8px 16px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .upload-action-btn:hover {
+            background: #e0e0e0;
+            border-color: #ccc;
+        }
+
+        /* NEW REDESIGNED RESULTS SECTION */
+        .results-section-new {
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #fafaf9 100%);
+            border: 1px solid #ebe7e1;
+            border-radius: 20px;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .results-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .results-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .results-header p {
+            font-size: 1.1rem;
+            color: #888;
+            font-weight: 500;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .result-card-new {
+            background: #ffffff;
+            border: 1px solid #f0ede7;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .result-card-new:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f1eb 0%, #efe9e1 100%);
+            border-radius: 12px;
+        }
+
+        .card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        /* Audio Player Styling */
+        .audio-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .audio-player-box {
+            background: #f9f9f8;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #ede9e1;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .audio-player-box audio {
+            width: 100%;
+            height: 45px;
+        }
+
+        /* Transcript Display */
+        .transcript-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .transcript-display {
+            background: #f9f9f8;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #ede9e1;
+            line-height: 1.8;
+            color: #333;
+            font-size: 0.95rem;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+            flex: 1;
+            word-wrap: break-word;
+        }
+
+        .transcript-display::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .transcript-display::-webkit-scrollbar-track {
+            background: #eee;
+            border-radius: 3px;
+        }
+
+        .transcript-display::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+
+        .transcript-display::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+        /* Buttons */
+        .btn-download, .btn-copy, .btn-reset {
+            width: 100%;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-download, .btn-copy {
+            background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+            color: #ffffff;
+            margin-bottom: 0;
+        }
+
+        .btn-download:hover, .btn-copy:hover {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+            color: #1a1a1a;
+            border: 1px solid #ddd;
+            font-weight: 600;
+        }
+
+        .btn-reset:hover {
+            background: linear-gradient(135deg, #e8e8e8 0%, #ddd 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
         /* SCROLLING REVIEWS SECTION - NEW */
         .reviews-section {
             margin: 6rem 0;
@@ -559,12 +831,15 @@
             position: relative;
         }
 
-        .reviews-title span {
+        .reviews-title h2 {
+            -webkit-backdrop-filter: blur(5px);
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(5px);
             padding: 0.5rem 2rem;
             border-radius: 100px;
             border: 1px solid rgba(0, 0, 0, 0.05);
+            display: inline-block;
+            margin: 0;
         }
 
         .reviews-track {
@@ -586,6 +861,7 @@
         .review-card {
             min-width: 350px;
             background: rgba(255, 255, 255, 0.7);
+                        -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 32px;
@@ -915,6 +1191,83 @@
             font-size: 1.2rem;
         }
 
+        .sidebar-user-section {
+            margin-top: auto;
+            border-top: 2px solid #f5f5f5;
+            padding-top: 1.5rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            position: relative;
+        }
+
+        .sidebar-user-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            padding: 0.9rem;
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+
+        .sidebar-user-profile:hover {
+            background: #f5f5f5;
+        }
+
+        .sidebar-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a1a, #4a4a4a);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .sidebar-user-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sidebar-user-name {
+            font-weight: 600;
+            color: #111111;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sidebar-user-email {
+            font-size: 0.7rem;
+            color: #888888;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sidebar-dropdown {
+            position: absolute;
+            bottom: 100%;
+            left: 1.5rem;
+            right: 1.5rem;
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-dropdown.show {
+            display: block;
+        }
+
         .back-nav {
             margin-top: 2rem;
             border-top: 2px solid #f5f5f5;
@@ -1020,6 +1373,70 @@
             color: #111111;
         }
 
+        .project-card {
+            background: #fafafa;
+            border: 1px solid #eaeaea;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .project-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #111111;
+        }
+
+        .project-id-badge {
+            background: #111111;
+            color: #ffffff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: "Inter", monospace;
+        }
+
+        .credential-row {
+            background: #ffffff;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            padding: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .credential-label {
+            font-size: 0.85rem;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            min-width: 80px;
+        }
+
+        .credential-value {
+            font-family: "Inter", monospace;
+            font-size: 0.9rem;
+            color: #111111;
+            flex: 1;
+            margin: 0 1rem;
+            word-break: break-all;
+        }
+
+        .credential-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
         .copy-btn {
             background: transparent;
             border: 1px solid #eaeaea;
@@ -1033,6 +1450,23 @@
 
         .copy-btn:hover {
             background: #f0f0f0;
+        }
+
+        .revoke-btn {
+            background: transparent;
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            padding: 0.3rem 1rem;
+            border-radius: 100px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .revoke-btn:hover {
+            background: #ef4444;
+            color: #ffffff;
         }
 
         .generate-btn {
@@ -1073,7 +1507,7 @@
             height: 100%;
             background: #111111;
             border-radius: 100px;
-            width: 73%;
+            width: 0%;
         }
 
         .week-labels {
@@ -1083,12 +1517,519 @@
             font-size: 0.85rem;
         }
 
+        /* User Profile Header */
+        .user-profile-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a1a, #4a4a4a);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #111111;
+            font-size: 0.95rem;
+        }
+
+        .user-email {
+            font-size: 0.75rem;
+            color: #888888;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 55px;
+            right: 0;
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .user-dropdown.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 0.9rem 1.2rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            color: #444444;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-item:first-child {
+            border-radius: 12px 12px 0 0;
+        }
+
+        .dropdown-item:last-child {
+            border-radius: 0 0 12px 12px;
+        }
+
+        .dropdown-item:hover {
+            background: #f5f5f5;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: #f0f0f0;
+            margin: 0.5rem 0;
+        }
+
+        /* Dashboard Page Sections */
+        .dashboard-page {
+            display: none;
+        }
+
+        .dashboard-page.active {
+            display: block;
+        }
+
+        /* Docs styling */
+        .docs-section {
+            margin-bottom: 2rem;
+        }
+
+        .docs-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #111111;
+        }
+
+        .docs-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+            color: #111111;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .docs-section p {
+            color: #666666;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .docs-section ol, .docs-section ul {
+            color: #666666;
+            line-height: 1.8;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .docs-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .docs-section code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #d63384;
+        }
+
+        .docs-section pre {
+            background: #1a1a1a;
+            color: #e0e0e0;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 1.2rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .docs-section pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+            border-radius: 0;
+            font-size: inherit;
+        }
+
+        .docs-endpoint-spacing {
+            background: #f9f9f9;
+            border-left: 4px solid #007bff;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        .docs-endpoint-spacing > div:first-child {
+            margin-bottom: 0.8rem;
+        }
+
+        .endpoint-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .endpoint-badge.post {
+            background: #22c55e;
+            color: #ffffff;
+        }
+
+        .endpoint-badge.get {
+            background: #3b82f6;
+            color: #ffffff;
+        }
+
+        .docs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+
+        .docs-table tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .docs-table th {
+            text-align: left;
+            padding: 8px;
+            background: #f9f9f9;
+            font-weight: 600;
+        }
+
+        .docs-table td {
+            padding: 8px;
+        }
+        /* Form styling */
+        .form-group-spacing {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            font-size: 0.95rem;
+        }
+
+        .danger-button {
+            border-color: #ef4444 !important;
+            color: #ef4444 !important;
+        }
+
+        .docs-endpoint-spacing {
+            margin: 1.5rem 0;
+        }
+
+        .usage-info-spacing {
+            margin-top: 1rem;
+        }
+
+        .project-input-wrapper {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-input-field {
+            flex: 1;
+            margin: 0;
+        }
+
+        .project-create-btn {
+            white-space: nowrap;
+        }
+
+        .project-info-text {
+            margin-bottom: 1.5rem;
+        }
+
         .hidden {
             display: none !important;
+        }
+
+        /* Modal System */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 24px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: #1a1a1a;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-body p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0 0 16px 0;
+        }
+
+        .modal-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-code {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 16px 0;
+            word-break: break-all;
+        }
+
+        .modal-credentials {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+
+        .credential-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 12px 0;
+            padding: 12px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #f0f0f0;
+            gap: 12px;
+        }
+
+        .credential-item:first-child {
+            margin-top: 0;
+        }
+
+        .credential-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .credential-label-small {
+            font-size: 12px;
+            color: #999;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .credential-value {
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 12px;
+            color: #1a1a1a;
+            word-break: break-all;
+            flex: 1;
+            padding: 0 12px;
+        }
+
+        .copy-btn {
+            background: #f0f0f0;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .copy-btn:hover {
+            background: #e0e0e0;
+            color: #1a1a1a;
+        }
+
+        .copy-btn.copied {
+            background: #4caf50;
+            color: white;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid #f0f0f0;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-btn.primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .modal-btn.primary:hover {
+            background: #0056b3;
+        }
+
+        .modal-btn.secondary {
+            background: #f0f0f0;
+            color: #1a1a1a;
+        }
+
+        .modal-btn.secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .modal-btn.danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .modal-btn.danger:hover {
+            background: #c82333;
+        }
+
+        .modal-btn.success {
+            background: #4caf50;
+            color: white;
+        }
+
+        .modal-btn.success:hover {
+            background: #45a049;
+        }
+
+        .modal-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .modal-message {
+            color: #1a1a1a;
+            font-weight: 500;
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
+    <!-- Modal System -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Modal Title</h2>
+                <button class="modal-close" id="modalCloseBtn">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content goes here -->
+            </div>
+            <div class="modal-footer" id="modalFooter">
+                <!-- Dynamic buttons go here -->
+            </div>
+        </div>
+    </div>
+
     <div class="gradient-bg"></div>
     <div class="floating-shapes">
         <div class="shape shape-1"></div>
@@ -1104,7 +2045,7 @@
             </div>
             <div class="nav-right">
                 <button class="dev-button" id="toggleDevBtn">
-                    <span>→</span> developer console
+                    developer console
                 </button>
             </div>
         </nav>
@@ -1178,36 +2119,94 @@
                         </div>
 
                         <div class="upload-area-modern" id="creativeUploadArea">
-                            <div class="upload-icon-large">🎧</div>
-                            <div class="upload-title">drop your audio here</div>
-                            <div class="upload-hint">click anywhere to browse</div>
-                            <input type="file" id="audioFile" accept="audio/*" style="display: none;" />
-                            
-                            <div class="features-row">
-                                <div class="feature-tag">
-                                    <span></span> noise removal
-                                </div>
-                                <div class="feature-tag">
-                                    <span></span> transcription
-                                </div>
-                                <div class="feature-tag">
-                                    <span></span> instant
+                            <div id="uploadInitial">
+                                <div class="upload-icon-large">🎧</div>
+                                <div class="upload-title">drop your audio here</div>
+                                <div class="upload-hint">click anywhere to browse</div>
+                                
+                                <div class="features-row">
+                                    <div class="feature-tag">
+                                        <span></span> noise removal
+                                    </div>
+                                    <div class="feature-tag">
+                                        <span></span> transcription
+                                    </div>
+                                    <div class="feature-tag">
+                                        <span></span> instant
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                            <div id="uploadSelected" class="hidden upload-selected-container">
+                                <div class="upload-selected-info">
+                                    <div class="upload-file-icon">📁</div>
+                                    <div class="upload-file-name" id="selectedFileName">file.mp3</div>
+                                    <div class="upload-file-size" id="selectedFileSize">2.5 MB</div>
+                                </div>
+                                <div class="upload-action-buttons">
+                                    <button id="removeFileBtn" class="upload-action-btn">Remove</button>
+                                    <button id="selectAnotherBtn" class="upload-action-btn">Select Another</button>
+                                </div>
+                            </div>
+
+                            <input type="file" id="audioFile" class="hidden" />
+                        </div>
                         <button class="process-btn-modern">
                             <span></span> process audio
-                            <span>→</span>
+
                         </button>
                     </div>
+                </div>
+            </div>
+
+            <!-- RESULTS SECTION - NEW LOCATION -->
+            <div id="resultsSection" class="results-section-new hidden">
+                <div class="results-inner">
+                    <div class="results-header">
+                        <h2>Your Processed Audio</h2>
+                        <p>Clean audio • Accurate transcription</p>
+                    </div>
+
+                    <div class="results-grid">
+                        <!-- Audio Player Card -->
+                        <div class="result-card-new audio-card">
+                            <div class="card-header">
+                                <div class="card-icon">🎵</div>
+                                <h3>Processed Audio</h3>
+                            </div>
+                            <div class="audio-player-box">
+                                <audio id="processedAudio" controls>
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                            <button id="downloadAudioBtn" class="btn-download">
+                                Download Audio File
+                            </button>
+                        </div>
+
+                        <!-- Transcript Card -->
+                        <div class="result-card-new transcript-card">
+                            <div class="card-header">
+                                <div class="card-icon">📝</div>
+                                <h3>Transcript</h3>
+                            </div>
+                            <div id="transcriptText" class="transcript-display"></div>
+                            <button id="copyTranscriptBtn" class="btn-copy">
+                                Copy to Clipboard
+                            </button>
+                        </div>
+                    </div>
+
+                    <button id="resetBtn" class="btn-reset">
+                        Process Another File
+                    </button>
                 </div>
             </div>
 
             <!-- SCROLLING REVIEWS SECTION - NEW -->
             <div class="reviews-section">
                 <div class="reviews-title">
-                    <span>loved by creators worldwide</span>
+                    <h2>loved by creators worldwide</h2>
                 </div>
                 
                 <div class="reviews-track">
@@ -1343,11 +2342,11 @@
                             <a href="#">forgot password?</a>
                         </div>
                     </div>
-                    <button class="login-submit-btn">sign in →</button>
+                    <button class="login-submit-btn">sign in</button>
                 </div>
 
                 <!-- Signup Form -->
-                <div id="signupForm" style="display: none;">
+                <div id="signupForm" class="hidden">
                     <div class="form-group">
                         <label>full name</label>
                         <input type="text" placeholder="Alex Chen" />
@@ -1360,9 +2359,8 @@
                         <label>password</label>
                         <input type="password" placeholder="create a password" />
                     </div>
-                    <button class="login-submit-btn">create account →</button>
+                    <button class="login-submit-btn">create account</button>
                 </div>
-
                 <div class="divider">
                     <span>or</span>
                 </div>
@@ -1377,107 +2375,699 @@
                 </div>
             </div>
             
-            <div style="text-align: center;">
-                <a href="#" id="backToHomeFromLogin" class="back-link">← back to home</a>
+            <div class="text-center">
+                <a href="#" id="backToHomeFromLogin" class="back-link">back to home</a>
             </div>
         </div>
-
         <!-- DEVELOPER DASHBOARD -->
         <div id="devView">
             <div class="dev-dashboard">
                 <!-- sidebar -->
                 <div class="dev-sidebar">
                     <h2>console</h2>
-                    <div class="dev-nav-item active">
+                    <div class="dev-nav-item active" data-page="dashboard">
                         <i></i> dashboard
                     </div>
-                    <div class="dev-nav-item">
+                    <div class="dev-nav-item" data-page="usage">
                         <i></i> usage
                     </div>
-                    <div class="dev-nav-item">
-                        <i></i> api keys
+                    <div class="dev-nav-item" data-page="apiKeys">
+                        api keys
                     </div>
-                    <div class="dev-nav-item">
+                    <div class="dev-nav-item" data-page="docs">
                         <i></i> docs
                     </div>
-                    <div class="dev-nav-item">
+                    <div class="dev-nav-item" data-page="settings">
                         <i></i> settings
                     </div>
-                    <div class="dev-nav-item back-nav" id="backToUserBtn">
-                        <i>←</i> back to app
+                    <div class="sidebar-user-section">
+                        <div class="sidebar-user-profile" id="sidebarUserProfile">
+                            <div class="sidebar-avatar" id="sidebarUserAvatar">U</div>
+                            <div class="sidebar-user-info">
+                                <div class="sidebar-user-name" id="sidebarUserName">User</div>
+                                <div class="sidebar-user-email" id="sidebarUserEmail">user@example.com</div>
+                            </div>
+                        </div>
+                        <div class="sidebar-dropdown" id="sidebarDropdown">
+                            <div class="dropdown-item" id="sidebarViewProfileBtn">
+                                <span></span> Profile
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item" id="sidebarLogoutBtn">
+                                <span></span> Logout
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- main content -->
                 <div class="dev-content">
                     <div class="dev-header">
-                        <h1>dashboard</h1>
-                        <span class="plan-badge">pro plan</span>
+                        <h1 id="pageTitle">dashboard</h1>
                     </div>
 
-                    <div class="metric-grid">
-                        <div class="metric-card">
-                            <div class="metric-label">api calls</div>
-                            <div class="metric-number">14.2k</div>
-                            <div class="metric-trend">↑ 12%</div>
+                    <!-- Dashboard Overview Page -->
+                    <div class="dashboard-page active" id="dashboardPage">
+                        <div class="metric-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">api calls</div>
+                                <div class="metric-number" id="metricApiCalls">0</div>
+                                <div class="metric-trend" id="metricApiCallsTrend">No usage yet</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">audio minutes</div>
+                                <div class="metric-number" id="metricAudioMinutes">0</div>
+                                <div class="metric-trend" id="metricAudioMinutesTrend">No usage yet</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">active keys</div>
+                                <div class="metric-number" id="metricActiveKeys">0</div>
+                                <div class="metric-trend" id="metricActiveKeysTrend">No API keys yet</div>
+                            </div>
                         </div>
-                        <div class="metric-card">
-                            <div class="metric-label">audio minutes</div>
-                            <div class="metric-number">6.4k</div>
-                            <div class="metric-trend">↑ 8%</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="metric-label">team</div>
-                            <div class="metric-number">5</div>
-                            <div class="metric-trend">2 pending</div>
+
+                        <!-- usage summary -->
+                        <div class="dev-section">
+                            <h3>usage summary</h3>
+                            <div class="flex-between">
+                                <span class="font-medium" id="usageSummaryMinutes">0 minutes</span>
+                                <span class="text-secondary" id="usageSummaryCalls">0 calls</span>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-fill" id="usageFill"></div>
+                            </div>
+                            <div class="week-labels">
+                                <span id="usagePeriodLabel">No usage data yet</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- api keys -->
-                    <div class="dev-section">
-                        <h3>api keys</h3>
-                        <div class="api-key-row">
-                            <code>prod_echo_live_••••••••w9x7q</code>
-                            <button class="copy-btn">copy</button>
+                    <!-- Usage Page -->
+                    <div class="dashboard-page" id="usagePage">
+                        <div class="dev-section">
+                            <h3>usage details</h3>
+                            <div class="metric-grid">
+                                <div class="metric-card">
+                                    <div class="metric-label">total api calls</div>
+                                    <div class="metric-number" id="usageApiCalls">0</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">total minutes</div>
+                                    <div class="metric-number" id="usageMinutes">0</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-label">current period</div>
+                                    <div class="metric-number" id="usagePeriod">Month</div>
+                                </div>
+                            </div>
+                            <div class="usage-bar">
+                                <div class="usage-fill" id="usageFillDetailed"></div>
+                            </div>
+                            <p class="text-secondary usage-info-spacing">Track your API usage and monitor your monthly limits.</p>
                         </div>
-                        <div class="api-key-row">
-                            <code>dev_echo_test_••••••••3f8k2</code>
-                            <button class="copy-btn">copy</button>
-                        </div>
-                        <button class="generate-btn" style="margin-top: 0.5rem;">+ generate new key</button>
                     </div>
 
-                    <!-- quick start -->
-                    <div class="dev-section">
-                        <h3>quick start</h3>
-                        <div class="code-block">
-                            curl -X POST https://api.echo.audio/v1/enhance \<br>
-                            &nbsp;&nbsp;-H "Authorization: Bearer YOUR_KEY" \<br>
-                            &nbsp;&nbsp;-F "file=@recording.wav"
+                    <!-- API Keys Page -->
+                    <div class="dashboard-page" id="apiKeysPage">
+                        <div class="dev-section">
+                            <h3>projects</h3>
+                            <p class="text-secondary project-info-text">Create a project to get an API key and secret key for integration.</p>
+                            <div class="project-input-wrapper">
+                                <input type="text" id="projectNameInput" placeholder="Project name" class="form-input project-input-field" />
+                                <button class="generate-btn project-create-btn" id="createProjectBtn">+ create project</button>
+                            </div>
+                            <div id="projectsContainer">
+                                <div class="text-secondary">No projects yet. Create one to get started.</div>
+                            </div>
                         </div>
-                        <a href="#" style="color: #111111; font-weight: 500; text-decoration: none;">→ full documentation</a>
                     </div>
 
-                    <!-- usage -->
-                    <div class="dev-section">
-                        <h3>this week's usage</h3>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <span style="font-weight: 500;">1,842 minutes</span>
-                            <span style="color: #888888;">73% of limit</span>
+                    <!-- Docs Page -->
+                    <div class="dashboard-page" id="docsPage">
+                        <div class="docs-section">
+                            <h2>API Documentation</h2>
+                            <p>Welcome to Echo Audio API. This comprehensive guide will help you integrate professional audio enhancement into your applications.</p>
+                            
+                            <!-- Getting Started Section -->
+                            <h3>Getting Started</h3>
+                            <p>To use the Echo API, you need:</p>
+                            <ol>
+                                <li><strong>Project ID</strong> - Uniquely identifies your project</li>
+                                <li><strong>API Key</strong> - Authenticates your requests</li>
+                                <li><strong>Secret Key</strong> - Additional security credential</li>
+                            </ol>
+                            <p><strong>How to get credentials:</strong></p>
+                            <ol>
+                                <li>Go to the <strong>Projects</strong> page</li>
+                                <li>Click <strong>Create Project</strong> and enter a project name</li>
+                                <li>View and copy your Project ID, API Key, and Secret Key</li>
+                                <li>Store these securely - the Secret Key is only shown once</li>
+                            </ol>
+
+                            <!-- Authentication Section -->
+                            <h3>Authentication</h3>
+                            <p>All API requests require authentication. Include your credentials in the Authorization header:</p>
+                            <pre>Authorization: Bearer {PROJECT_ID}:{API_KEY}:{SECRET_KEY}</pre>
+                            <p><strong>Example with cURL:</strong></p>
+                            <pre>curl -H "Authorization: Bearer proj_abc123:echo_key_xyz:echo_secret_def" \
+  https://api.echo.audio/v1/enhance</pre>
+                            <p><strong>Example with JavaScript Fetch:</strong></p>
+                            <pre>const credentials = `${projectId}:${apiKey}:${secretKey}`;
+const authHeader = `Bearer ${credentials}`;
+
+fetch('https://api.echo.audio/v1/enhance', {
+  method: 'POST',
+  headers: {
+    'Authorization': authHeader,
+    'Content-Type': 'application/json'
+  },
+  body: formData
+});</pre>
+
+                            <!-- API Endpoints Section -->
+                            <h3>API Endpoints</h3>
+                            
+                            <!-- Upload Endpoint -->
+                            <div class="docs-endpoint-spacing">
+                                <div><span class="endpoint-badge post">POST</span><code>/api/v1/public/upload</code></div>
+                                <p><strong>Description:</strong> Upload an audio file for noise removal and enhancement.</p>
+                                
+                                <p><strong>Request Parameters:</strong></p>
+                                <ul>
+                                    <li><code>file</code> (required, multipart/form-data) - Audio file to process</li>
+                                    <li><code>Supported formats:</code> WAV, MP3, M4A, FLAC, OGG</li>
+                                    <li><code>Max file size:</code> 500MB (Free tier: 50MB)</li>
+                                </ul>
+
+                                <p><strong>Response:</strong></p>
+                                <pre>{
+  "job_id": "job_abc123xyz",
+  "status": "processing",
+  "message": "Audio file received and queued for processing"
+}</pre>
+
+                                <p><strong>Example Request:</strong></p>
+                                <pre>curl -X POST https://api.echo.audio/api/v1/public/upload \
+  -H "Authorization: Bearer proj_abc:echo_key_xyz:echo_secret_def" \
+  -F "file=@recording.wav"</pre>
+
+                                <p><strong>JavaScript Example:</strong></p>
+                                <pre>const formData = new FormData();
+formData.append('file', audioFile);
+
+const response = await fetch('https://api.echo.audio/api/v1/public/upload', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${projectId}:${apiKey}:${secretKey}`
+  },
+  body: formData
+});
+
+const data = await response.json();
+console.log('Job ID:', data.job_id);</pre>
+                            </div>
+
+                            <!-- Result Endpoint -->
+                            <div class="docs-endpoint-spacing">
+                                <div><span class="endpoint-badge get">GET</span><code>/api/v1/public/result/{job_id}</code></div>
+                                <p><strong>Description:</strong> Retrieve the results of a processing job.</p>
+                                
+                                <p><strong>URL Parameters:</strong></p>
+                                <ul>
+                                    <li><code>job_id</code> (required) - The job ID returned from upload endpoint</li>
+                                </ul>
+
+                                <p><strong>Response (Processing):</strong></p>
+                                <pre>{
+  "job_id": "job_abc123xyz",
+  "status": "processing",
+  "message": "Your audio is being enhanced"
+}</pre>
+
+                                <p><strong>Response (Completed):</strong></p>
+                                <pre>{
+  "job_id": "job_abc123xyz",
+  "status": "completed",
+  "text": "Full transcript of the audio...",
+  "audio_url": "https://storage.echo.audio/...",
+  "processing_time": 45,
+  "quality_score": 0.92
+}</pre>
+
+                                <p><strong>Response (Failed):</strong></p>
+                                <pre>{
+  "job_id": "job_abc123xyz",
+  "status": "failed",
+  "error": "Unsupported audio format"
+}</pre>
+
+                                <p><strong>Example Request:</strong></p>
+                                <pre>curl -X GET https://api.echo.audio/api/v1/public/result/job_abc123 \
+  -H "Authorization: Bearer proj_abc:echo_key_xyz:echo_secret_def"</pre>
+
+                                <p><strong>JavaScript Example with Polling:</strong></p>
+                                <pre>async function pollResult(jobId) {
+  let result;
+  
+  while (true) {
+    const response = await fetch(
+      `https://api.echo.audio/api/v1/public/result/${jobId}`,
+      {
+        headers: {
+          'Authorization': `Bearer ${projectId}:${apiKey}:${secretKey}`
+        }
+      }
+    );
+    
+    result = await response.json();
+    
+    if (result.status === 'completed') {
+      console.log('Transcript:', result.text);
+      return result;
+    } else if (result.status === 'failed') {
+      throw new Error(result.error);
+    }
+    
+    // Wait 2 seconds before polling again
+    await new Promise(resolve => setTimeout(resolve, 2000));
+  }
+}</pre>
+                            </div>
+
+                            <!-- Error Codes Section -->
+                            <h3>Error Codes</h3>
+                            <table class="docs-table">
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Meaning</th>
+                                </tr>
+                                <tr>
+                                    <td><code>200</code></td>
+                                    <td>Success - Request processed successfully</td>
+                                </tr>
+                                <tr>
+                                    <td><code>400</code></td>
+                                    <td>Bad Request - Invalid parameters or malformed request</td>
+                                </tr>
+                                <tr>
+                                    <td><code>401</code></td>
+                                    <td>Unauthorized - Invalid or missing credentials</td>
+                                </tr>
+                                <tr>
+                                    <td><code>403</code></td>
+                                    <td>Forbidden - Revoked or inactive project</td>
+                                </tr>
+                                <tr>
+                                    <td><code>413</code></td>
+                                    <td>Payload Too Large - File exceeds size limit</td>
+                                </tr>
+                                <tr>
+                                    <td><code>429</code></td>
+                                    <td>Too Many Requests - Rate limit exceeded</td>
+                                </tr>
+                                <tr>
+                                    <td><code>500</code></td>
+                                    <td>Internal Server Error - Server-side error</td>
+                                </tr>
+                            </table>
+
+                            <!-- Rate Limits Section -->
+                            <h3>Rate Limits & Quotas</h3>
+                            <table class="docs-table">
+                                <tr>
+                                    <th>Plan</th>
+                                    <th>Requests/Month</th>
+                                    <th>Max File Size</th>
+                                    <th>Audio Minutes</th>
+                                </tr>
+                                <tr>
+                                    <td><strong>Free</strong></td>
+                                    <td>100</td>
+                                    <td>50 MB</td>
+                                    <td>1,000 minutes</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pro</strong></td>
+                                    <td>10,000</td>
+                                    <td>500 MB</td>
+                                    <td>Unlimited</td>
+                                </tr>
+                            </table>
+
+                            <!-- Best Practices Section -->
+                            <h3>Best Practices</h3>
+                            <ul>
+                                <li><strong>Store credentials securely:</strong> Never hardcode API keys in client-side code. Use environment variables or backend proxies.</li>
+                                <li><strong>Use exponential backoff:</strong> When polling results, increase wait time gradually to avoid excessive requests.</li>
+                                <li><strong>Implement proper error handling:</strong> Always check response status codes and error messages.</li>
+                                <li><strong>Monitor usage:</strong> Check your usage statistics regularly on the dashboard to avoid exceeding quotas.</li>
+                                <li><strong>Cache results:</strong> Store processed results to avoid re-processing the same audio files.</li>
+                                <li><strong>Rotate credentials:</strong> Periodically revoke old projects and create new ones for enhanced security.</li>
+                                <li><strong>Use specific file formats:</strong> WAV and FLAC provide best quality, MP3 is more compact.</li>
+                                <li><strong>Handle timeouts:</strong> Set appropriate timeout values for your requests (recommended: 5-10 minutes for large files).</li>
+                            </ul>
+
+                            <!-- Code Examples Section -->
+                            <h3>Code Examples</h3>
+                            
+                            <p><strong>Python Example:</strong></p>
+                            <pre>import requests
+import time
+
+PROJECT_ID = "proj_abc123"
+API_KEY = "echo_key_xyz"
+SECRET_KEY = "echo_secret_def"
+
+credentials = f"{PROJECT_ID}:{API_KEY}:{SECRET_KEY}"
+headers = {"Authorization": f"Bearer {credentials}"}
+
+# Upload file
+with open('recording.wav', 'rb') as f:
+    response = requests.post(
+        'https://api.echo.audio/api/v1/public/upload',
+        headers=headers,
+        files={'file': f}
+    )
+    job_id = response.json()['job_id']
+
+# Poll for results
+while True:
+    response = requests.get(
+        f'https://api.echo.audio/api/v1/public/result/{job_id}',
+        headers=headers
+    )
+    result = response.json()
+    
+    if result['status'] == 'completed':
+        print(f"Transcript: {result['text']}")
+        break
+    elif result['status'] == 'failed':
+        print(f"Error: {result['error']}")
+        break
+    
+    time.sleep(2)</pre>
+
+                            <p><strong>Node.js Example:</strong></p>
+                            <pre>const fs = require('fs');
+const fetch = require('node-fetch');
+
+const PROJECT_ID = 'proj_abc123';
+const API_KEY = 'echo_key_xyz';
+const SECRET_KEY = 'echo_secret_def';
+
+const credentials = `${PROJECT_ID}:${API_KEY}:${SECRET_KEY}`;
+
+async function processAudio(filePath) {
+  // Upload
+  const formData = new FormData();
+  formData.append('file', fs.createReadStream(filePath));
+  
+  const uploadRes = await fetch('https://api.echo.audio/api/v1/public/upload', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${credentials}` },
+    body: formData
+  });
+  
+  const { job_id } = await uploadRes.json();
+  
+  // Poll
+  let completed = false;
+  while (!completed) {
+    const resultRes = await fetch(
+      `https://api.echo.audio/api/v1/public/result/${job_id}`,
+      { headers: { 'Authorization': `Bearer ${credentials}` } }
+    );
+    
+    const result = await resultRes.json();
+    
+    if (result.status === 'completed') {
+      console.log('Transcript:', result.text);
+      completed = true;
+    } else if (result.status === 'failed') {
+      throw new Error(result.error);
+    }
+    
+    await new Promise(r => setTimeout(r, 2000));
+  }
+}
+
+processAudio('recording.wav');</pre>
+
+                            <!-- Support Section -->
+                            <h3>Support & Contact</h3>
+                            <p>For issues, questions, or feature requests, please contact our support team at <strong>support@echo.audio</strong></p>
+                            <p><strong>API Status Page:</strong> <a href="https://status.echo.audio" target="_blank" rel="noopener noreferrer">status.echo.audio</a></p>
+                            <p><strong>Rate Limit Headers:</strong> Check response headers for remaining quota:</p>
+                            <ul>
+                                <li><code>X-RateLimit-Limit</code> - Total requests allowed</li>
+                                <li><code>X-RateLimit-Remaining</code> - Requests remaining</li>
+                                <li><code>X-RateLimit-Reset</code> - When limit resets (Unix timestamp)</li>
+                            </ul>
                         </div>
-                        <div class="usage-bar">
-                            <div class="usage-fill"></div>
+                    </div>
+
+                    <!-- Settings Page -->
+                    <div class="dashboard-page" id="settingsPage">
+                        <div class="dev-section">
+                            <h3>account settings</h3>
+                            <div class="form-group-spacing">
+                                <label class="form-label">Plan</label>
+                                <div class="plan-badge" id="settingsPlan">free plan</div>
+                            </div>
+                            <div class="form-group-spacing">
+                                <label class="form-label">Email Notifications</label>
+                                <button class="generate-btn">Configure Notifications</button>
+                            </div>
                         </div>
-                        <div class="week-labels">
-                            <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+                        <div class="dev-section">
+                            <h3>danger zone</h3>
+                            <button class="generate-btn danger-button">Delete Account</button>
+                        </div>
+                    </div>
+
+                    <!-- Profile Page -->
+                    <div class="dashboard-page" id="profilePage">
+                        <div class="dev-section">
+                            <h3>profile information</h3>
+                            <div class="form-group-spacing">
+                                <label class="form-label">Name</label>
+                                <input type="text" id="profileName" class="form-input" value="" />
+                            </div>
+                            <div class="form-group-spacing">
+                                <label class="form-label">Email</label>
+                                <input type="email" id="profileEmail" class="form-input" value="" readonly />
+                            </div>
+                            <button class="generate-btn">Save Changes</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <script>
+        // ===== MODAL SYSTEM =====
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const modalFooter = document.getElementById('modalFooter');
+        const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+        let modalResolve = null;
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            if (modalResolve) {
+                modalResolve(null);
+                modalResolve = null;
+            }
+        }
+
+        modalCloseBtn.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        function showModal(title, content, buttons, type = 'info') {
+            return new Promise((resolve) => {
+                modalResolve = resolve;
+                modalTitle.textContent = title;
+                modalBody.innerHTML = content;
+                
+                modalFooter.innerHTML = '';
+                buttons.forEach((btn) => {
+                    const button = document.createElement('button');
+                    button.className = `modal-btn ${btn.style || 'secondary'}`;
+                    button.textContent = btn.text;
+                    button.addEventListener('click', () => {
+                        closeModal();
+                        btn.onClick?.();
+                    });
+                    modalFooter.appendChild(button);
+                });
+
+                modalOverlay.classList.add('active');
+            });
+        }
+
+        // Alert Modal
+        function showAlert(title, message) {
+            const content = `<p>${message}</p>`;
+            return showModal(title, content, [
+                { text: 'OK', style: 'primary', onClick: () => {} }
+            ]);
+        }
+
+        // Success Modal
+        function showSuccess(title, message) {
+            const content = `<div style="text-align: center;">
+                <p style="font-weight: 500; color: #4caf50;">${message}</p>
+            </div>`
+            return showModal(title, content, [
+                { text: 'OK', style: 'success', onClick: () => {} }
+            ]);
+        }
+
+        // Error Modal
+        function showError(title, message) {
+            const content = `<div style="text-align: center;">
+                <p style="font-weight: 500; color: #dc3545;">${message}</p>
+            </div>`
+            return showModal(title, content, [
+                { text: 'OK', style: 'danger', onClick: () => {} }
+            ]);
+        }
+
+        // Confirm Modal
+        function showConfirm(title, message) {
+            const content = `<p>${message}</p>`;
+            return new Promise((resolve) => {
+                modalResolve = () => resolve(false);
+                modalTitle.textContent = title;
+                modalBody.innerHTML = content;
+                
+                modalFooter.innerHTML = '';
+                const cancelBtn = document.createElement('button');
+                cancelBtn.className = 'modal-btn secondary';
+                cancelBtn.textContent = 'Cancel';
+                cancelBtn.addEventListener('click', () => {
+                    closeModal();
+                    resolve(false);
+                });
+
+                const confirmBtn = document.createElement('button');
+                confirmBtn.className = 'modal-btn primary';
+                confirmBtn.textContent = 'Confirm';
+                confirmBtn.addEventListener('click', () => {
+                    closeModal();
+                    resolve(true);
+                });
+
+                modalFooter.appendChild(cancelBtn);
+                modalFooter.appendChild(confirmBtn);
+
+                modalOverlay.classList.add('active');
+            });
+        }
+
+        // Show Credentials Modal (for projects)
+        function showCredentialsModal(title, credentials) {
+            console.log('Showing credentials modal with data:', credentials);
+            let content = '<div class="modal-credentials">';
+            
+            Object.entries(credentials).forEach(([key, value]) => {
+                // Skip empty or null values
+                if (value === null || value === undefined || value === '') {
+                    console.warn(`Skipping empty credential: ${key}`);
+                    return;
+                }
+                
+                const displayKey = key
+                    .replace(/_/g, ' ')
+                    .replace(/\b\w/g, l => l.toUpperCase());
+                
+                const isSecretKey = key.toLowerCase().includes('secret');
+                const valueId = `cred-value-${Math.random().toString(36).substr(2, 9)}`;
+                const maskId = `cred-mask-${Math.random().toString(36).substr(2, 9)}`;
+                
+                let credentialHTML = `
+                    <div class="credential-item">
+                        <div style="flex: 1;">
+                            <div class="credential-label-small">${displayKey}</div>
+                            <div class="credential-value">
+                                ${isSecretKey ? `
+                                    <span id="${maskId}" style="display: inline;">••••••••••••••••</span>
+                                    <span id="${valueId}" style="display: none; word-break: break-all;">${value}</span>
+                                ` : `
+                                    <span id="${valueId}">${value}</span>
+                                `}
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 8px; margin-left: 8px;">
+                            ${isSecretKey ? `
+                                <button class="copy-btn" onclick="toggleSecretVisibility('${valueId}', '${maskId}', this)">view</button>
+                            ` : ''}
+                            <button class="copy-btn" onclick="copyCredentialValue('${valueId}', this)">copy</button>
+                        </div>
+                    </div>
+                `;
+                
+                content += credentialHTML;
+            });
+            
+            content += '</div>';
+            
+            return showModal(title, content, [
+                { text: 'Close', style: 'primary', onClick: () => {} }
+            ]);
+        }
+
+        // Toggle Secret Key Visibility
+        function toggleSecretVisibility(valueId, maskId, buttonEl) {
+            const valueEl = document.getElementById(valueId);
+            const maskEl = document.getElementById(maskId);
+            
+            if (maskEl.style.display === 'none') {
+                maskEl.style.display = 'inline';
+                valueEl.style.display = 'none';
+                buttonEl.textContent = 'view';
+            } else {
+                maskEl.style.display = 'none';
+                valueEl.style.display = 'inline';
+                buttonEl.textContent = 'hide';
+            }
+        }
+
+        // Copy Credential Value
+        function copyCredentialValue(valueId, buttonEl) {
+            const valueEl = document.getElementById(valueId);
+            const text = valueEl.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = buttonEl.textContent;
+                buttonEl.textContent = 'copied';
+                buttonEl.classList.add('copied');
+                setTimeout(() => {
+                    buttonEl.textContent = originalText;
+                    buttonEl.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Copy to Clipboard Helper
+        function copyToClipboard(text, buttonEl) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = buttonEl.textContent;
+                buttonEl.textContent = 'copied'
+                buttonEl.classList.add('copied');
+                setTimeout(() => {
+                    buttonEl.textContent = originalText;
+                    buttonEl.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
         (function() {
             const landingView = document.getElementById('landingView');
             const loginView = document.getElementById('loginView');
@@ -1500,7 +3090,7 @@
 
             audioInput?.addEventListener('change', (e) => {
                 if (e.target.files.length > 0) {
-                    alert(`Selected: ${e.target.files[0].name}`);
+                    showAlert('File Selected', `Selected: ${e.target.files[0].name}`);
                 }
             });
 
@@ -1508,6 +3098,8 @@
             loginTab.addEventListener('click', () => {
                 loginTab.classList.add('active');
                 signupTab.classList.remove('active');
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
                 loginForm.style.display = 'block';
                 signupForm.style.display = 'none';
             });
@@ -1515,6 +3107,8 @@
             signupTab.addEventListener('click', () => {
                 signupTab.classList.add('active');
                 loginTab.classList.remove('active');
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
                 loginForm.style.display = 'none';
                 signupForm.style.display = 'block';
             });
@@ -1523,22 +3117,35 @@
                 landingView.style.display = 'block';
                 loginView.style.display = 'none';
                 devView.style.display = 'none';
-                toggleBtn.innerHTML = '<span>→</span> developer console';
+                toggleBtn.textContent = 'developer console'
             }
 
             function showLogin() {
                 landingView.style.display = 'none';
                 loginView.style.display = 'block';
                 devView.style.display = 'none';
-                toggleBtn.innerHTML = '<span>←</span> back to home';
+                toggleBtn.textContent = 'back to home'
+
+                // Default to sign-in tab each time login page opens
+                loginTab.classList.add('active');
+                signupTab.classList.remove('active');
+                loginForm.classList.remove('hidden');
+                signupForm.classList.add('hidden');
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
             }
 
             function showDev() {
                 landingView.style.display = 'none';
                 loginView.style.display = 'none';
                 devView.style.display = 'block';
-                toggleBtn.innerHTML = '<span>←</span> back to app';
+                toggleBtn.textContent = 'back to app'
             }
+
+            // Expose view helpers for auth handlers defined outside this scope
+            window.showLanding = showLanding;
+            window.showLogin = showLogin;
+            window.showDev = showDev;
 
             // Toggle button handler
             toggleBtn.addEventListener('click', (e) => {
@@ -1569,22 +3176,745 @@
                 showLanding();
             });
 
-            // Demo: form submission goes to dev dashboard
-            document.querySelectorAll('.login-submit-btn, .google-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showDev();
-                });
-            });
-
-            // Process button demo
-            document.querySelector('.process-btn-modern')?.addEventListener('click', () => {
-                alert('✨ Processing demo - in production this would handle your audio');
-            });
-
             // Initial state
             showLanding();
         })();
+
+        let API_BASE_URL = 'http://127.0.0.1:8002/api/v1';
+
+        async function loadRuntimeConfig() {
+            try {
+                const isLiveServer = window.location.port === '5500' || window.location.port === '5501';
+                if (isLiveServer) {
+                    // VS Code Live Server usually blocks dotfiles like .env
+                    return;
+                }
+
+                const response = await fetch('/.env', { cache: 'no-store' });
+                if (!response.ok) return;
+
+                const envText = await response.text();
+                const match = envText.match(/^\s*API_BASE_URL\s*=\s*(.+)\s*$/m);
+                if (!match) return;
+
+                const rawValue = match[1].trim().replace(/^['"]|['"]$/g, '');
+                let normalized = rawValue.replace(/\/+$/, '');
+
+                if (!/\/api\/v1$/i.test(normalized)) {
+                    normalized += '/api/v1';
+                }
+
+                API_BASE_URL = normalized;
+                console.log('Loaded API_BASE_URL from .env:', API_BASE_URL);
+            } catch (error) {
+                console.warn('Could not load .env, using default API_BASE_URL:', API_BASE_URL);
+            }
+        }
+
+        loadRuntimeConfig();
+
+        // ========== FREE USER FUNCTIONS ==========
+
+        async function uploadAudio(file, startProcessing = false) {
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            try {
+                if (startProcessing) {
+                    document.getElementById('selectedFileName').textContent = 'processing...';
+                    document.getElementById('selectedFileSize').textContent = 'this may take 20-30 seconds';
+                } else {
+                    document.getElementById('selectedFileName').textContent = 'uploading...';
+                    document.getElementById('selectedFileSize').textContent = '';
+                }
+                
+                const response = await fetch(`${API_BASE_URL}/public/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Upload failed');
+                }
+                
+                console.log('Upload successful:', data);
+                
+                // Store job ID globally for later processing
+                window.currentJobId = data.job_id;
+                
+                // Start polling for results only if startProcessing is true
+                if (startProcessing) {
+                    pollForResult(data.job_id);
+                } else {
+                    // Just uploaded, show ready to process
+                    const file = audioInput.files[0];
+                    const fileName = file.name;
+                    const fileSize = (file.size / 1024 / 1024).toFixed(2);
+                    document.getElementById('selectedFileName').textContent = fileName;
+                    document.getElementById('selectedFileSize').textContent = fileSize + ' MB - Ready to process';
+                }
+                
+            } catch (error) {
+                console.error('Upload error:', error);
+                showError('Upload Failed', error.message);
+                document.getElementById('selectedFileName').textContent = 'upload failed';
+                document.getElementById('selectedFileSize').textContent = 'try again';
+            }
+        }
+
+        async function pollForResult(jobId) {
+            document.getElementById('selectedFileName').textContent = 'processing...';
+            document.getElementById('selectedFileSize').textContent = 'this may take 1-3 minutes on first run';
+            
+            let attempts = 0;
+            const maxAttempts = 60; // 2 minutes max (should complete in 30-60s with tiny model)
+            const pollInterval = 2000; // Check every 2 seconds
+            
+            const poll = setInterval(async () => {
+                attempts++;
+                try {
+                    const response = await fetch(`${API_BASE_URL}/public/result/${jobId}`);
+                    const result = await response.json();
+                    
+                    console.log('Poll result:', result);
+                    
+                    if (result.status === 'completed') {
+                        clearInterval(poll);
+                        console.log('Processing completed successfully:', result);
+                        displayResult(result);
+                        // Reset file and UI for next upload
+                        audioInput.value = '';
+                        document.getElementById('uploadInitial').classList.remove('hidden');
+                        document.getElementById('uploadSelected').classList.add('hidden');
+                    } else if (result.status === 'failed') {
+                        clearInterval(poll);
+                        console.log('Processing failed:', result);
+                        showError('Processing Failed', result.error || 'Unknown error occurred');
+                        document.getElementById('selectedFileName').textContent = 'processing failed';
+                        document.getElementById('selectedFileSize').textContent = 'try again';
+                    }
+                    // If status is 'queued' or 'processing', keep polling
+                } catch (error) {
+                    console.error('Polling error:', error);
+                    // Continue polling even if error occurs
+                }
+                
+                // Stop polling if max attempts reached
+                if (attempts >= maxAttempts) {
+                    clearInterval(poll);
+                    showError('Processing Timeout', 'Audio processing took too long (2+ minutes). The server may be overloaded.');
+                    document.getElementById('selectedFileName').textContent = 'processing timeout';
+                    document.getElementById('selectedFileSize').textContent = 'try again';
+                }
+            }, pollInterval);
+        }
+
+        function displayResult(result) {
+            // Get the audio file from the response
+            const audioData = result.audio_file;  // Base64 or file URL from backend
+            const transcript = result.text;
+            
+            // Show results section
+            const resultsSection = document.getElementById('resultsSection');
+            resultsSection.classList.remove('hidden');
+            
+            // Set audio player source
+            const audioElement = document.getElementById('processedAudio');
+            if (audioData) {
+                // If it's a base64 string, convert to blob URL
+                if (audioData.startsWith('data:audio')) {
+                    audioElement.src = audioData;
+                } else {
+                    // If it's a URL
+                    audioElement.src = audioData;
+                }
+            }
+            
+            // Set transcript text
+            const transcriptBox = document.getElementById('transcriptText');
+            transcriptBox.textContent = transcript;
+            
+            // Scroll to results section
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // ========== DEVELOPER AUTH (via Backend) ==========
+
+        async function developerLogin(email, password) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/email/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Authentication failed');
+                }
+
+                localStorage.setItem('authToken', data.id_token);
+                localStorage.setItem('userEmail', data.email || email);
+                localStorage.setItem('userName', data.name || email);
+
+                await loadDeveloperDashboard();
+                showDev();
+            } catch (error) {
+                console.error('Login error:', error);
+                showError('Login Failed', error.message);
+            }
+        }
+
+        async function developerSignup(name, email, password) {
+            try {
+                if (!email || !password) {
+                    throw new Error('Email and password are required');
+                }
+
+                const response = await fetch(`${API_BASE_URL}/auth/signup`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, password })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Signup failed');
+                }
+
+                localStorage.setItem('authToken', data.id_token);
+                localStorage.setItem('userEmail', data.email || email);
+                localStorage.setItem('userName', data.name || name || email);
+
+                await loadDeveloperDashboard();
+                showDev();
+            } catch (error) {
+                console.error('Signup error:', error);
+                showError('Signup Failed', error.message);
+            }
+        }
+
+        async function googleLogin() {
+            window.location.href = `${API_BASE_URL}/auth/google/login`;
+        }
+
+        async function loadDeveloperDashboard() {
+            const token = localStorage.getItem('authToken');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/developer/dashboard`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Failed to load dashboard');
+                }
+                updateDashboardUI(data);
+                updateUserProfileHeader();
+                await loadProjects();
+                
+            } catch (error) {
+                console.error('Dashboard error:', error);
+                updateDashboardUI({ profile: {}, usage: {}, api_keys: [] });
+                updateUserProfileHeader();
+                displayProjects([]);
+            }
+        }
+
+        function updateDashboardUI(data) {
+            const profile = data?.profile || {};
+            const usage = data?.usage || {};
+            const apiKeys = Array.isArray(data?.api_keys) ? data.api_keys : [];
+
+            const planBadge = document.getElementById('planBadge');
+            const metricApiCalls = document.getElementById('metricApiCalls');
+            const metricApiCallsTrend = document.getElementById('metricApiCallsTrend');
+            const metricAudioMinutes = document.getElementById('metricAudioMinutes');
+            const metricAudioMinutesTrend = document.getElementById('metricAudioMinutesTrend');
+            const metricActiveKeys = document.getElementById('metricActiveKeys');
+            const metricActiveKeysTrend = document.getElementById('metricActiveKeysTrend');
+            const usageSummaryMinutes = document.getElementById('usageSummaryMinutes');
+            const usageSummaryCalls = document.getElementById('usageSummaryCalls');
+            const usageFill = document.getElementById('usageFill');
+            const usagePeriodLabel = document.getElementById('usagePeriodLabel');
+            const apiKeysContainer = document.getElementById('apiKeysContainer');
+            
+            // Usage page elements
+            const usageApiCalls = document.getElementById('usageApiCalls');
+            const usageMinutes = document.getElementById('usageMinutes');
+            const usagePeriod = document.getElementById('usagePeriod');
+            const usageFillDetailed = document.getElementById('usageFillDetailed');
+
+            const lifetimeCalls = Number(usage.lifetime_calls || profile.total_api_calls || 0);
+            const lifetimeMinutes = Number(usage.lifetime_minutes || profile.total_minutes || 0);
+            const periodCalls = Number(usage.total_calls || 0);
+            const periodMinutes = Number(usage.total_minutes || 0);
+
+            if (metricApiCalls) metricApiCalls.textContent = lifetimeCalls.toLocaleString();
+            if (metricApiCallsTrend) metricApiCallsTrend.textContent = `${periodCalls.toLocaleString()} calls this ${usage.period || 'period'}`;
+            if (metricAudioMinutes) metricAudioMinutes.textContent = lifetimeMinutes.toLocaleString();
+            if (metricAudioMinutesTrend) metricAudioMinutesTrend.textContent = `${periodMinutes.toLocaleString()} mins this ${usage.period || 'period'}`;
+
+            const activeKeyCount = apiKeys.filter(k => k.is_active !== false).length;
+            if (metricActiveKeys) metricActiveKeys.textContent = activeKeyCount.toLocaleString();
+            if (metricActiveKeysTrend) metricActiveKeysTrend.textContent = activeKeyCount > 0 ? 'Ready to use' : 'No API keys yet';
+
+            if (usageSummaryMinutes) usageSummaryMinutes.textContent = `${periodMinutes.toLocaleString()} minutes`;
+            if (usageSummaryCalls) usageSummaryCalls.textContent = `${periodCalls.toLocaleString()} calls`;
+            if (usagePeriodLabel) usagePeriodLabel.textContent = `Period: ${usage.period || 'month'}`;
+
+            const limitMinutes = 10000;
+            const usagePercent = Math.max(0, Math.min(100, (periodMinutes / limitMinutes) * 100));
+            if (usageFill) usageFill.style.width = `${usagePercent}%`;
+            if (usageFillDetailed) usageFillDetailed.style.width = `${usagePercent}%`;
+
+            // Update usage page
+            if (usageApiCalls) usageApiCalls.textContent = lifetimeCalls.toLocaleString();
+            if (usageMinutes) usageMinutes.textContent = lifetimeMinutes.toLocaleString();
+            if (usagePeriod) usagePeriod.textContent = (usage.period || 'month').charAt(0).toUpperCase() + (usage.period || 'month').slice(1);
+
+            if (apiKeysContainer) {
+                if (!apiKeys.length) {
+                    apiKeysContainer.innerHTML = '<div class="text-secondary">No API keys yet.</div>';
+                } else {
+                    apiKeysContainer.innerHTML = apiKeys.map((key) => {
+                        const raw = key.name || key.key_id || 'key';
+                        const masked = `${raw}`.slice(0, 18);
+                        const display = key.is_active === false ? `${masked} (revoked)` : masked;
+                        return `<div class="api-key-row"><code>${display}</code></div>`;
+                    }).join('');
+                }
+            }
+        }
+
+        async function createApiKey(name) {
+            const token = localStorage.getItem('authToken');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/developer/api-keys`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name })
+                });
+                
+                const data = await response.json();
+                showCredentialsModal('New API Key Generated', {
+                    'API Key': data.api_key,
+                    'Created At': new Date().toLocaleString()
+                });
+                loadDeveloperDashboard(); // Refresh
+                
+            } catch (error) {
+                console.error('Error creating API key:', error);
+            }
+        }
+
+        // ========== PROJECT MANAGEMENT ==========
+        async function createProject(projectName) {
+            const token = localStorage.getItem('authToken');
+            
+            if (!projectName.trim()) {
+                showAlert('Missing Project Name', 'Please enter a project name');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/developer/projects`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ project_name: projectName })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to create project');
+                }
+
+                const data = await response.json();
+                
+                // Show credentials modal
+                showProjectCredentials(data);
+                
+                // Clear input
+                document.getElementById('projectNameInput').value = '';
+                
+                // Refresh projects list
+                await loadProjects();
+                
+            } catch (error) {
+                console.error('Error creating project:', error);
+                showError('Project Creation Failed', error.message);
+            }
+        }
+
+        async function loadProjects() {
+            const token = localStorage.getItem('authToken');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/developer/projects`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                const projects = await response.json();
+                displayProjects(projects);
+                
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        }
+
+        function displayProjects(projects) {
+            const container = document.getElementById('projectsContainer');
+            
+            if (!projects || projects.length === 0) {
+                container.innerHTML = '<div class="text-secondary">No projects yet. Create one to get started.</div>';
+                return;
+            }
+
+            container.innerHTML = projects.map(project => `
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-name">${project.project_name}</div>
+                            <div class="text-secondary" style="font-size: 0.85rem; margin-top: 0.3rem;">
+                                Created: ${new Date(project.created_at).toLocaleDateString()}
+                            </div>
+                        </div>
+                        <div class="project-id-badge">${project.project_id}</div>
+                    </div>
+                    <div class="credential-row">
+                        <span class="credential-label">API Key</span>
+                        <span class="credential-value">••••••••</span>
+                        <div class="credential-actions">
+                            <button class="copy-btn" onclick="viewProjectCredentials('${project.project_id}')">View</button>
+                            <button class="revoke-btn" onclick="deleteProject('${project.project_id}')">Revoke</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function viewProjectCredentials(projectId) {
+            const token = localStorage.getItem('authToken');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/developer/projects/${projectId}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to load project credentials');
+                }
+
+                const project = await response.json();
+                console.log('Project data received:', project);
+                showProjectCredentials(project);
+                
+            } catch (error) {
+                console.error('Error viewing credentials:', error);
+                showError('Failed to Load Credentials', error.message);
+            }
+        }
+
+        function showProjectCredentials(project) {
+            showCredentialsModal(`Project: ${project.project_name}`, {
+                'Project ID': project.project_id,
+                'API Key': project.api_key,
+                'Secret Key': project.secret_key
+            });
+        }
+
+        async function deleteProject(projectId) {
+            const confirmed = await showConfirm('Revoke Project', 'Are you sure? This will revoke the project and invalidate all credentials.');
+            if (!confirmed) {
+                return;
+            }
+
+            const token = localStorage.getItem('authToken');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/developer/projects/${projectId}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to revoke project');
+                }
+
+                showSuccess('Project Revoked', 'Project revoked successfully');
+                await loadProjects();
+                
+            } catch (error) {
+                console.error('Error revoking project:', error);
+                showError('Revocation Failed', error.message);
+            }
+        }
+
+        async function logout() {
+            const token = localStorage.getItem('authToken');
+            
+            try {
+                await fetch(`${API_BASE_URL}/auth/logout`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+            
+            localStorage.removeItem('authToken');
+            showLanding();
+        }
+
+        // ========== CONNECT TO YOUR EXISTING UI ==========
+
+        // Upload handlers
+        const audioInput = document.getElementById('audioFile');
+        const uploadInitial = document.getElementById('uploadInitial');
+        const uploadSelected = document.getElementById('uploadSelected');
+
+        // Click on initial upload area to browse
+        uploadInitial?.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Opening file picker from initial state');
+            audioInput.click();
+        });
+
+        // Remove file button
+        document.getElementById('removeFileBtn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Remove file clicked');
+            audioInput.value = '';
+            uploadInitial.classList.remove('hidden');
+            uploadSelected.classList.add('hidden');
+        });
+
+        // Select another button
+        document.getElementById('selectAnotherBtn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Select another file clicked');
+            audioInput.value = '';
+            audioInput.click();
+        });
+
+        // File selection handler
+        audioInput?.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                console.log('File selected:', file.name);
+                
+                // Show selected file UI, hide initial UI
+                uploadInitial.classList.add('hidden');
+                uploadSelected.classList.remove('hidden');
+                
+                // Auto-upload the file
+                uploadAudio(file, false);
+            }
+        });
+
+        // Process button handler
+        document.querySelector('.process-btn-modern')?.addEventListener('click', () => {
+            if (window.currentJobId) {
+                // Start processing the uploaded file
+                console.log('Starting processing for job:', window.currentJobId);
+                pollForResult(window.currentJobId);
+            } else if (audioInput.files.length > 0) {
+                // Fallback: upload and process
+                uploadAudio(audioInput.files[0], true);
+            } else {
+                showAlert('No File Selected', 'Please select an audio file first');
+            }
+        });
+
+        // Copy transcript button
+        document.getElementById('copyTranscriptBtn')?.addEventListener('click', () => {
+            const transcriptText = document.getElementById('transcriptText').textContent;
+            navigator.clipboard.writeText(transcriptText).then(() => {
+                showAlert('Copied!', 'Transcript copied to clipboard');
+            }).catch(() => {
+                showError('Copy Failed', 'Could not copy to clipboard');
+            });
+        });
+
+        // Download audio button
+        document.getElementById('downloadAudioBtn')?.addEventListener('click', () => {
+            const audioElement = document.getElementById('processedAudio');
+            if (!audioElement.src) {
+                showAlert('No Audio', 'Audio file not available');
+                return;
+            }
+            
+            const link = document.createElement('a');
+            link.href = audioElement.src;
+            link.download = 'processed_audio.wav';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        // Reset / Process another file button
+        document.getElementById('resetBtn')?.addEventListener('click', () => {
+            // Hide results section
+            document.getElementById('resultsSection').classList.add('hidden');
+            
+            // Clear results
+            document.getElementById('processedAudio').src = '';
+            document.getElementById('transcriptText').textContent = '';
+            
+            // Reset file input
+            audioInput.value = '';
+            
+            // Show upload initial state
+            document.getElementById('uploadInitial').classList.remove('hidden');
+            document.getElementById('uploadSelected').classList.add('hidden');
+            
+            // Clear UI
+            document.getElementById('selectedFileName').textContent = '';
+            document.getElementById('selectedFileSize').textContent = '';
+        });
+
+        // Login form handlers
+        document.querySelectorAll('.login-submit-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const isLogin = document.getElementById('loginForm').style.display !== 'none';
+                
+                if (isLogin) {
+                    const email = document.querySelector('#loginForm input[type="email"]').value;
+                    const password = document.querySelector('#loginForm input[type="password"]').value;
+                    developerLogin(email, password);
+                } else {
+                    const name = document.querySelector('#signupForm input[placeholder="Alex Chen"]').value;
+                    const email = document.querySelector('#signupForm input[type="email"]').value;
+                    const password = document.querySelector('#signupForm input[type="password"]').value;
+                    developerSignup(name, email, password);
+                }
+            });
+        });
+
+        // Google button
+        document.querySelector('.google-btn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            googleLogin();
+        });
+
+        // Project creation button
+        document.getElementById('createProjectBtn')?.addEventListener('click', () => {
+            const projectName = document.getElementById('projectNameInput').value;
+            createProject(projectName);
+        });
+
+        // Allow Enter key to create project
+        document.getElementById('projectNameInput')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const projectName = document.getElementById('projectNameInput').value;
+                createProject(projectName);
+            }
+        });
+
+        // ========== DASHBOARD PAGE NAVIGATION ==========
+        const pageMap = {
+            dashboard: 'dashboardPage',
+            usage: 'usagePage',
+            apiKeys: 'apiKeysPage',
+            docs: 'docsPage',
+            settings: 'settingsPage',
+            profile: 'profilePage'
+        };
+
+        const pageTitles = {
+            dashboard: 'dashboard',
+            usage: 'usage',
+            apiKeys: 'api keys',
+            docs: 'documentation',
+            settings: 'settings',
+            profile: 'profile'
+        };
+
+        function showDashboardPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.dashboard-page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const pageId = pageMap[pageName];
+            if (pageId) {
+                document.getElementById(pageId)?.classList.add('active');
+                document.getElementById('pageTitle').textContent = pageTitles[pageName] || pageName;
+            }
+
+            // Update sidebar active state
+            document.querySelectorAll('.dev-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-page="${pageName}"]`)?.classList.add('active');
+        }
+
+        // Sidebar navigation handlers
+        document.querySelectorAll('[data-page]').forEach(item => {
+            item.addEventListener('click', () => {
+                const page = item.getAttribute('data-page');
+                showDashboardPage(page);
+            });
+        });
+
+        // ========== USER PROFILE DROPDOWN (SIDEBAR) ==========
+        const sidebarUserProfile = document.getElementById('sidebarUserProfile');
+        const sidebarDropdown = document.getElementById('sidebarDropdown');
+        const sidebarViewProfileBtn = document.getElementById('sidebarViewProfileBtn');
+        const sidebarLogoutBtn = document.getElementById('sidebarLogoutBtn');
+
+        sidebarUserProfile?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sidebarDropdown?.classList.toggle('show');
+        });
+
+        sidebarViewProfileBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            sidebarDropdown?.classList.remove('show');
+            showDashboardPage('profile');
+        });
+
+        sidebarLogoutBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            logout();
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            sidebarDropdown?.classList.remove('show');
+        });
+
+        // Update user profile info in sidebar
+        function updateUserProfileHeader() {
+            const name = localStorage.getItem('userName') || 'User';
+            const email = localStorage.getItem('userEmail') || 'user@example.com';
+            const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+
+            document.getElementById('sidebarUserName').textContent = name;
+            document.getElementById('sidebarUserEmail').textContent = email;
+            document.getElementById('sidebarUserAvatar').textContent = initials;
+
+            // Also update profile page
+            document.getElementById('profileName').value = name;
+            document.getElementById('profileEmail').value = email;
+        }
     </script>
 </body>
 </html>
